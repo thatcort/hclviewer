@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="hclController.js"></script>
+	<script type="text/javascript" src="lch2rgb.js"></script>
+	<script type="text/javascript" src="three.min.js"></script>
+	<script type="text/javascript" src="data.js"></script>
+	<script type="text/javascript" src="colorSurface.js"></script>
+	<script type="text/javascript" src="colorCanvas.js"></script>
+	<link rel="stylesheet" href="color.css">
+</head>
+<body>
+	<div style="height:500px">
+		<div id="hSlider" class="hclSlider"></div>
+		<div id="cSlider" class="hclSlider"></div>
+		<div id="lSlider" class="hclSlider"></div>
+		<div id="threed" style="display:inline-block"></div><canvas id="canvas" width="500" height="500" style="display:inline-block"></canvas>
+	</div>
+
+	<script type="text/javascript">
+		var width = 500;
+		var height = 500;
+
+		var hclController = hcl_controller();
+		buildColorSurface();
+		buildColorCanvas();
+	</script>
+
+</body>
+</html>

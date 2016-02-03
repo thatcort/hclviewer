@@ -1,0 +1,9 @@
+.hclSlider {
+	height: 100%;
+	display: inline-block;
+}
+
+.ui-slider-handle {
+	text-align: center;
+	/*font-size: 50%;*/
+}

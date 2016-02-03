@@ -1,0 +1,28 @@
+{
+  "name": "Color Spectrum Tool",
+  "description": "View and interact with the HCL color spectrum",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "color",
+    "datavisualization",
+    "datavis"
+  ],
+  "authors": [
+    "Brian Cort"
+  ],
+  "license": "MIT",
+  "homepage": "briancort.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-ui": "~1.11.4",
+    "three.js": "threejs#*"
+  }
+}
