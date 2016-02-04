@@ -207,14 +207,12 @@ function buildColorSurface() {
 	var inDrag = false;
 	var dragStartX, angleStart;
 	$('#threed').mousedown(function(evt) {
-		console.log(evt);
 		dragStartX = evt.screenX;
 		angleStart = camAngle;
 		inDrag = true;
 	});
 	$('html').mousemove(function(evt) {
 		if (inDrag) {
-			console.log(evt);
 			var dx = evt.screenX - dragStartX;
 			camAngle = angleStart - dx * 0.03;
 			render();
