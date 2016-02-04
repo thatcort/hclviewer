@@ -9,6 +9,8 @@ function buildColorCanvas() {
 	function drawHL() {
 		var img = ctx.createImageData(canvas.width, canvas.height);
 		var pix = img.data;
+		var width = canvas.width;
+		var height = canvas.height;
 
 		// draw HxL cylinder
 		var C = hclController.c();
@@ -32,6 +34,8 @@ function buildColorCanvas() {
 	function drawCL() {
 		var img = ctx.createImageData(canvas.width, canvas.height);
 		var pix = img.data;
+		var width = canvas.width;
+		var height = canvas.height;
 
 		// draw HxL cylinder
 		var H = hclController.h();
@@ -55,6 +59,8 @@ function buildColorCanvas() {
 	function drawHC() {
 		var img = ctx.createImageData(canvas.width, canvas.height);
 		var pix = img.data;
+		var width = canvas.width;
+		var height = canvas.height;
 
 		var h2 = height * 0.5;
 		var w2 = width * 0.5;
@@ -107,5 +113,12 @@ function buildColorCanvas() {
 	hclController.addListener(function() {
 		redraw();
 	});
+
+	function responsive() {
+		canvas.width = canvasWidth;
+		canvas.height = canvasHeight;
+		redraw();	
+	}
+	responsive();
 
 }

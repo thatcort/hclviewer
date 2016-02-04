@@ -161,8 +161,8 @@ function buildColorSurface() {
 	});
 
 
-	// var width = 500; // window.innerWidth;
-	// var height = 500; // window.innerHeight;
+	var width = canvasWidth;
+	var height = canvasHeight;
 
 	var scene = new THREE.Scene();
 	var camera = new THREE.PerspectiveCamera( 75, width/height, 0.1, 1000 );

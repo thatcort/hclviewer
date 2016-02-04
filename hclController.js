@@ -60,16 +60,26 @@ function hcl_controller() {
 				ctrl.l(event.value);
 			}
 		});
-		// $('#modeRadios').buttonset();
-		// $('#hcBtn').button();
-		// $('#clBtn').button();
-		// $('#hlBtn').button();
+		responsive();
+
 		$('#hcBtn').click(function() { ctrl.mode(MODE_HC); });
 		$('#clBtn').click(function() { ctrl.mode(MODE_CL); });
 		$('#hlBtn').click(function() { ctrl.mode(MODE_HL); });
 		setMode(mode);
 		updateHandleLabels();
 	});
+
+	function responsive() {
+		if (window.innerWidth < 768) {
+			$('#hSlider').slider("option", "orientation", "horizontal");
+			$('#cSlider').slider("option", "orientation", "horizontal");
+			$('#lSlider').slider("option", "orientation", "horizontal");
+		} else {
+			$('#hSlider').slider("option", "orientation", "vertical");
+			$('#cSlider').slider("option", "orientation", "vertical");
+			$('#lSlider').slider("option", "orientation", "vertical");
+		}
+	}
 
 
 	function fireEvent() {

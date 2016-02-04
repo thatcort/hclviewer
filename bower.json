@@ -23,6 +23,7 @@
   ],
   "dependencies": {
     "jquery-ui": "~1.11.4",
-    "three.js": "threejs#*"
+    "three.js": "threejs#*",
+    "jquery-ui-touch-punch": "*"
   }
 }

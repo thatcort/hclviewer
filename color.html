@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="jquery.ui.touch-punch.min.js"></script>
 	<script type="text/javascript" src="hclController.js"></script>
 	<script type="text/javascript" src="lch2rgb.js"></script>
 	<script type="text/javascript" src="three.min.js"></script>
@@ -34,8 +36,8 @@
 	</div>
 
 	<script type="text/javascript">
-		var width = 500;
-		var height = 500;
+		var canvasWidth, canvasHeight;
+		canvasWidth = canvasHeight = Math.min(window.innerWidth*0.4, 500);
 
 		var hclController = hcl_controller();
 		buildColorSurface();
