@@ -17,7 +17,7 @@ function hcl_controller() {
 	var c = 40;
 	var l = 50;
 
-	var mode = MODE_HC;
+	var mode = MODE_HL;
 
 
 
@@ -60,6 +60,13 @@ function hcl_controller() {
 				ctrl.l(event.value);
 			}
 		});
+		// $('#modeRadios').buttonset();
+		// $('#hcBtn').button();
+		// $('#clBtn').button();
+		// $('#hlBtn').button();
+		$('#hcBtn').click(function() { ctrl.mode(MODE_HC); });
+		$('#clBtn').click(function() { ctrl.mode(MODE_CL); });
+		$('#hlBtn').click(function() { ctrl.mode(MODE_HL); });
 		setMode(mode);
 		updateHandleLabels();
 	});
@@ -72,9 +79,9 @@ function hcl_controller() {
 	}
 
 	function updateHandleLabels() {
-		$('#hSlider .ui-slider-handle').text(h);
-		$('#cSlider .ui-slider-handle').text(c);
-		$('#lSlider .ui-slider-handle').text(l);
+		$('#hvalue').text(h);
+		$('#cvalue').text(c);
+		$('#lvalue').text(l);
 	}
 
 	ctrl.addListener = function(list) {
@@ -114,15 +121,27 @@ function hcl_controller() {
 		$('#hSlider').slider('disable');
 		$('#cSlider').slider('disable');
 		$('#lSlider').slider('disable');
+		$('#hvalue').addClass('disabled');
+		$('#cvalue').addClass('disabled');
+		$('#lvalue').addClass('disabled');
+		$('#hcBtn').removeClass('active');
+		$('#clBtn').removeClass('active');
+		$('#hlBtn').removeClass('active');
 		switch (mode) {
 			case MODE_HC:
 				$('#lSlider').slider('enable');
+				$('#lvalue').removeClass('disabled');
+				$('#hcBtn').addClass('active');
 				break;
 			case MODE_CL:
 				$('#hSlider').slider('enable');
+				$('#hvalue').removeClass('disabled');
+				$('#clBtn').addClass('active');
 				break;
 			case MODE_HL:
 				$('#cSlider').slider('enable');
+				$('#cvalue').removeClass('disabled');
+				$('#hlBtn').addClass('active');
 				break;
 		}
 	}

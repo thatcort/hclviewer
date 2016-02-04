@@ -1,7 +1,62 @@
-.hclSlider {
+html {
+	font-family: Verdana, Arial, sans-serif;
+}
+
+.sliderbox {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center; /*flex-start;*/
+	vertical-align: top;
+	height: 100%;
+}
+
+.modebox {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: stretch; /* center; */ /*flex-start;*/
+	vertical-align: top;
+	height: 100%;
+}
+
+.modeBtn {
+	flex-basis: auto;
+	flex-grow: 1;
+	text-align: center;
+	border: 1px solid #cccccc;
+	padding-top: 50%;
+	padding-bottom: 50%;
+}
+
+.modeBtn.active {
+	background-color: #aaaaaa;
+	/*color: white;*/
+}
+
+.btnLbl {
+/*	position: relative;
+	top: 40%;*/
+	padding-top: 20%;
+	padding-bottom: 20%;
+}
+
+.sliderbox .slabel {
+	flex-basis: auto;
+	flex-grow: 0;
+	text-align: center;
+}
+
+.slabel.disabled {
+	color: #ccc;
+}
+
+.sliderbox .hclSlider {
+	flex-grow: 1;
+}
+
+/*.hclSlider {
 	height: 100%;
 	display: inline-block;
-}
+}*/
 
 .ui-slider-handle {
 	text-align: center;

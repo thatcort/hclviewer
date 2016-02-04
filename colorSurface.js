@@ -119,9 +119,14 @@ function buildColorSurface() {
 
 	function createRect() {
 		if (!clRect) {
-			var geometry = new T.PlaneGeometry(100, 100, 1, 1);
+			var width = 120;
+			var height = 120;
+			var geometry = new T.PlaneGeometry(width, height, 1, 1);
+			geometry.translate(width*0.5, height*0.5, 0);
+			geometry.rotateX(Math.PI * 0.5);
 			var material = new THREE.MeshPhongMaterial({color: 0xffffff, side:THREE.DoubleSide});
 			clRect = new T.Mesh(geometry, material);
+			// clRect.rotationAutoUpdate = true;
 		}
 		clRect.rotation.set(0, 0, hclController.h() * DEG2RAD);
 	}
@@ -152,6 +157,7 @@ function buildColorSurface() {
 
 	hclController.addListener(function() {
 		updateMode();
+		render();
 	});
 
 
