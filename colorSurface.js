@@ -124,7 +124,7 @@ function buildColorSurface() {
 			var geometry = new T.PlaneGeometry(width, height, 1, 1);
 			geometry.translate(width*0.5, height*0.5, 0);
 			geometry.rotateX(Math.PI * 0.5);
-			var material = new THREE.MeshPhongMaterial({color: 0xffffff, side:THREE.DoubleSide});
+			var material = new THREE.MeshPhongMaterial({color: 0xffffff, side:THREE.DoubleSide, transparent: true, opacity: 0.8});
 			clRect = new T.Mesh(geometry, material);
 			// clRect.rotationAutoUpdate = true;
 		}
@@ -200,22 +200,52 @@ function buildColorSurface() {
 	camera.lookAt(camLA);
 
 	var camAngle = 0;
-	var autoRotate = true;
-	document.getElementById('threed').onclick = function() { autoRotate = !autoRotate; if (autoRotate) { render(); } };
+	var autoRotate = false;
+	// document.getElementById('threed').onclick = function() { autoRotate = !autoRotate; if (autoRotate) { render(); } };
 	// document.getElementById('threed').ondrag = function() { autoRotate = !autoRotate; if (autoRotate) { render(); } };
+
+	var inDrag = false;
+	var dragStartX, angleStart;
+	$('#threed').mousedown(function(evt) {
+		console.log(evt);
+		dragStartX = evt.screenX;
+		angleStart = camAngle;
+		inDrag = true;
+	});
+	$('html').mousemove(function(evt) {
+		if (inDrag) {
+			console.log(evt);
+			var dx = evt.screenX - dragStartX;
+			camAngle = angleStart - dx * 0.03;
+			render();
+		}
+	});
+	$('html').mouseup(function() {
+		if (inDrag) {
+			inDrag = false;
+		}
+	});
+
+	function positionCamera() {
+		camera.position.x = camDx * Math.cos(camAngle);
+		camera.position.y = camDx * Math.sin(camAngle);
+		camera.lookAt(camLA);
+	}
+
 	var render = function () {
-		if (autoRotate) {
-			requestAnimationFrame( render );
-		}
+		// if (autoRotate) {
+		// 	requestAnimationFrame( render );
+		// }
 
-		if (autoRotate) {
-			// surface.rotation.z += 0.01;
-			camAngle += 0.01;
-			camera.position.x = camDx * Math.cos(camAngle);
-			camera.position.y = camDx * Math.sin(camAngle);
-			camera.lookAt(camLA);
-		}
+		// if (autoRotate) {
+		// 	// surface.rotation.z += 0.01;
+		// 	camAngle += 0.01;
+		// 	camera.position.x = camDx * Math.cos(camAngle);
+		// 	camera.position.y = camDx * Math.sin(camAngle);
+		// 	camera.lookAt(camLA);
+		// }
 
+		positionCamera();
 		renderer.render(scene, camera);
 	};
 
