@@ -206,23 +206,29 @@ function buildColorSurface() {
 
 	var inDrag = false;
 	var dragStartX, angleStart;
-	$('#threed').mousedown(function(evt) {
+	function dragStart(evt) {
 		dragStartX = evt.screenX;
 		angleStart = camAngle;
 		inDrag = true;
-	});
-	$('html').mousemove(function(evt) {
+	}
+	function dragMove(evt) {
 		if (inDrag) {
 			var dx = evt.screenX - dragStartX;
 			camAngle = angleStart - dx * 0.03;
 			render();
-		}
-	});
-	$('html').mouseup(function() {
+		}		
+	}
+	function dragEnd() {
 		if (inDrag) {
 			inDrag = false;
 		}
-	});
+	}
+	$('#threed').mousedown(dragStart);
+	$('html').mousemove(dragMove);
+	$('html').mouseup(dragEnd);
+	$('#threed').bind('touchstart', function(e) { dragStart(e.originalEvent.changedTouches[0]); });
+	$('html').bind('touchmove', function(e) { dragMove(e.originalEvent.changedTouches[0]); });
+	$('html').bind('touchend', dragEnd);
 
 	function positionCamera() {
 		camera.position.x = camDx * Math.cos(camAngle);
@@ -231,18 +237,6 @@ function buildColorSurface() {
 	}
 
 	var render = function () {
-		// if (autoRotate) {
-		// 	requestAnimationFrame( render );
-		// }
-
-		// if (autoRotate) {
-		// 	// surface.rotation.z += 0.01;
-		// 	camAngle += 0.01;
-		// 	camera.position.x = camDx * Math.cos(camAngle);
-		// 	camera.position.y = camDx * Math.sin(camAngle);
-		// 	camera.lookAt(camLA);
-		// }
-
 		positionCamera();
 		renderer.render(scene, camera);
 	};
