@@ -108,7 +108,6 @@ function buildColorCanvas() {
 				break;
 		}
 	}
-	redraw();
 
 	hclController.addListener(function() {
 		redraw();
@@ -119,6 +118,7 @@ function buildColorCanvas() {
 		canvas.height = canvasHeight;
 		redraw();	
 	}
+	addResponsiveListener(responsive);
 	responsive();
 
 }

@@ -241,5 +241,12 @@ function buildColorSurface() {
 		renderer.render(scene, camera);
 	};
 
+	function responsive() {
+		renderer.setSize(canvasWidth, canvasHeight);
+		camera.aspect = canvasWidth / canvasHeight;
+		camera.updateProjectionMatrix();
+	}
+	addResponsiveListener(responsive);
+
 	render();
 }

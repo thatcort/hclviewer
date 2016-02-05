@@ -3,10 +3,21 @@ html {
 }
 
 @media screen and (max-width: 767px) {
+	html {
+		margin: 0;
+		padding: 0;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+		border: none;	
+	}
+
 	.sliderbox {
 		display: inline-flex;
 		flex-direction: row;
-		align-items: center; /*flex-start;*/
+		align-items: center;
 		vertical-align: middle;
 		width: 100%;
 	}
@@ -14,7 +25,7 @@ html {
 	.modebox {
 		display: inline-flex;
 		flex-direction: row;
-		align-items: stretch; /* center; */ /*flex-start;*/
+		align-items: stretch;
 		vertical-align: middle;
 		width: 100%;
 	}	
@@ -24,17 +35,36 @@ html {
 		flex-grow: 1;
 		text-align: center;
 		border: 1px solid #cccccc;
-		padding-top: 2%;
-		padding-bottom: 2%;
 	}
 
+	.btnLbl {
+		padding-top: 20%;
+		padding-bottom: 20%;
+		line-height: 40px;
+	}
+
+	.slabel {
+		margin-right: 5px;
+	}
+
+	.svalue {
+		margin-right: 5px;
+		min-width: 3em;
+	}
+
+	#threed {
+		display: block;
+	}
+	#canvas {
+		display: block;
+	}
 }
 
 @media screen and (min-width: 768px) {
 	.sliderbox {
 		display: inline-flex;
 		flex-direction: column;
-		align-items: center; /*flex-start;*/
+		align-items: center;
 		vertical-align: top;
 		height: 100%;
 	}
@@ -42,7 +72,7 @@ html {
 	.modebox {
 		display: inline-flex;
 		flex-direction: column;
-		align-items: stretch; /* center; */ /*flex-start;*/
+		align-items: stretch;
 		vertical-align: top;
 		height: 100%;
 	}	
@@ -52,40 +82,55 @@ html {
 		flex-grow: 1;
 		text-align: center;
 		border: 1px solid #cccccc;
-		padding-top: 50%;
-		padding-bottom: 50%;
+/*		padding-top: 50%;
+		padding-bottom: 50%;*/
 	}
 
+	.btnLbl {
+		line-height: 50px;
+	}
+
+	.svalue {
+		min-width: 2em;
+	}
+
+	#threed {
+		display: inline-block;
+	}
+	#canvas {
+		display: inline-block;
+	}
 }
 
 
 
 .modeBtn.active {
 	background-color: #aaaaaa;
-	/*color: white;*/
-}
-
-.btnLbl {
-	padding-top: 20%;
-	padding-bottom: 20%;
 }
 
 .sliderbox .slabel {
 	flex-basis: auto;
 	flex-grow: 0;
 	text-align: center;
+	font-weight: bold;
 }
 
 .slabel.disabled {
 	color: #ccc;
 }
 
+.sliderbox .svalue {
+	flex-basis: auto;
+	flex-grow: 0;
+	text-align: center;
+}
+
+.svalue.disabled {
+	color: #ccc;
+}
+
+
 .sliderbox .hclSlider {
 	flex-grow: 1;
 }
-
-/*.hclSlider {
-	height: 100%;
-	display: inline-block;
-}*/
 

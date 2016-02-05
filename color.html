@@ -18,26 +18,37 @@
 	
 	
 		
-	<div style="height:500px">
+	<div id="topContainer" style="height:500px">
 		<div class="modebox">
 			<span class="slabel">Mode:</span>
 			<span class="modeBtn" id="hlBtn"><span class="btnLbl">HxL</span></span>
 			<span class="modeBtn" id="hcBtn"><span class="btnLbl">HxC</span></span>
 			<span class="modeBtn" id="clBtn"><span class="btnLbl">CxL</span></span>
 		</div>
-		<div class='sliderbox'><span class="slabel">H</span><span class="slabel" id="hvalue"></span><div id="hSlider" class="hclSlider"></div></div>
-		<div class='sliderbox'><span class="slabel">C</span><span class="slabel" id="cvalue"></span><div id="cSlider" class="hclSlider"></div></div>
-		<div class='sliderbox'><span class="slabel">L</span><span class="slabel" id="lvalue"></span><div id="lSlider" class="hclSlider"></div></div>
+		<div class='sliderbox'><span class="slabel">H</span><span class="svalue" id="hvalue"></span><div id="hSlider" class="hclSlider"></div></div>
+		<div class='sliderbox'><span class="slabel">C</span><span class="svalue" id="cvalue"></span><div id="cSlider" class="hclSlider"></div></div>
+		<div class='sliderbox'><span class="slabel">L</span><span class="svalue" id="lvalue"></span><div id="lSlider" class="hclSlider"></div></div>
 
-		<!-- <div class='slider'><span class="slabel">H</span><div id="hSlider" class="hclSlider"></div></div> -->
-<!-- 		<div id="cSlider" class="hclSlider"></div>
-		<div id="lSlider" class="hclSlider"></div>
- -->		<div id="threed" style="display:inline-block"></div><canvas id="canvas" width="500" height="500" style="display:inline-block"></canvas>
+		<div id="threed"></div><canvas id="canvas" ></canvas>
 	</div>
 
 	<script type="text/javascript">
 		var canvasWidth, canvasHeight;
-		canvasWidth = canvasHeight = Math.min(window.innerWidth*0.4, 500);
+		var responsiveListeners = [];
+		function addResponsiveListener(list) {
+			responsiveListeners.push(list);
+		}
+		$(window).resize(function() {
+			calcCanvasSize();
+			responsiveListeners.forEach(function(list) {
+				list();
+			});
+		})
+
+		function calcCanvasSize() {
+			canvasWidth = canvasHeight = window.innerWidth < 786 ? window.innerWidth : Math.min(window.innerWidth*0.35, 500);
+		}
+		calcCanvasSize();
 
 		var hclController = hcl_controller();
 		buildColorSurface();

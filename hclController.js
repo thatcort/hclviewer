@@ -71,15 +71,18 @@ function hcl_controller() {
 
 	function responsive() {
 		if (window.innerWidth < 768) {
+			$('#topContainer').css('height', 'auto');
 			$('#hSlider').slider("option", "orientation", "horizontal");
 			$('#cSlider').slider("option", "orientation", "horizontal");
 			$('#lSlider').slider("option", "orientation", "horizontal");
 		} else {
+			$('#topContainer').css('height', canvasHeight + 'px');
 			$('#hSlider').slider("option", "orientation", "vertical");
 			$('#cSlider').slider("option", "orientation", "vertical");
 			$('#lSlider').slider("option", "orientation", "vertical");
 		}
 	}
+	addResponsiveListener(responsive);
 
 
 	function fireEvent() {
