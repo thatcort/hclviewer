@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>HCL Viewer</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	<script type="text/javascript" src="bower_components/three.js/build/three.min.js"></script>
 	<script type="text/javascript" src="hclController.js"></script>
 	<script type="text/javascript" src="lch2rgb.js"></script>
-	<script type="text/javascript" src="three.min.js"></script>
 	<script type="text/javascript" src="data.js"></script>
 	<script type="text/javascript" src="colorSurface.js"></script>
 	<script type="text/javascript" src="colorCanvas.js"></script>
@@ -16,20 +17,21 @@
 </head>
 <body>
 	
-	
+	<h3>HCL Viewer</h3>
 		
 	<div id="topContainer" style="height:500px">
 		<div class="modebox">
 			<span class="slabel">Mode:</span>
+			<span class="modeBtn" id="clBtn"><span class="btnLbl">CxL</span></span>
 			<span class="modeBtn" id="hlBtn"><span class="btnLbl">HxL</span></span>
 			<span class="modeBtn" id="hcBtn"><span class="btnLbl">HxC</span></span>
-			<span class="modeBtn" id="clBtn"><span class="btnLbl">CxL</span></span>
 		</div>
 		<div class='sliderbox'><span class="slabel">H</span><span class="svalue" id="hvalue"></span><div id="hSlider" class="hclSlider"></div></div>
 		<div class='sliderbox'><span class="slabel">C</span><span class="svalue" id="cvalue"></span><div id="cSlider" class="hclSlider"></div></div>
 		<div class='sliderbox'><span class="slabel">L</span><span class="svalue" id="lvalue"></span><div id="lSlider" class="hclSlider"></div></div>
 
 		<div id="threed"></div><canvas id="canvas" ></canvas>
+		<p><a href="notes.html">Implementation notes.</a></p>
 	</div>
 
 	<script type="text/javascript">
@@ -46,7 +48,18 @@
 		})
 
 		function calcCanvasSize() {
-			canvasWidth = canvasHeight = window.innerWidth < 786 ? window.innerWidth : Math.min(window.innerWidth*0.35, 500);
+			var w = window.innerWidth;
+			if (w < 500) {
+				// canvasWidth = canvasHeight = Math.floor(w*0.7);	
+				canvasWidth = canvasHeight = Math.floor(Math.min(w-10, window.innerHeight*0.5));	
+			} else if (w < 768) {
+				canvasWidth = canvasHeight = Math.floor(w * 0.45);
+			} else {
+				canvasWidth = canvasHeight = Math.floor((w - 220) * 0.5);
+				// canvasWidth = canvasHeight = Math.min(window.innerWidth*0.35, 500);
+			}
+			$('#threed').css({'width': canvasWidth + 'px', 'height': canvasHeight + 'px'});
+			$('#canvas').css({'width': canvasWidth + 'px', 'height': canvasHeight + 'px'});
 		}
 		calcCanvasSize();
 

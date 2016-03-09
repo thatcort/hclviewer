@@ -53,12 +53,24 @@ html {
 	}
 
 	#threed {
+		display: inline-block;
+	}
+	#canvas {
+		display: inline-block;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	#threed {
 		display: block;
+		margin: auto;
 	}
 	#canvas {
 		display: block;
+		margin: auto;
 	}
 }
+
 
 @media screen and (min-width: 768px) {
 	.sliderbox {
@@ -92,6 +104,7 @@ html {
 
 	.svalue {
 		min-width: 2em;
+		margin-bottom: 5px;
 	}
 
 	#threed {

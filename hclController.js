@@ -17,7 +17,7 @@ function hcl_controller() {
 	var c = 40;
 	var l = 50;
 
-	var mode = MODE_HL;
+	var mode = MODE_CL;
 
 
 

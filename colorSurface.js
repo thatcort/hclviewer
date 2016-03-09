@@ -199,7 +199,7 @@ function buildColorSurface() {
 	camera.up.set(0,0,1);
 	camera.lookAt(camLA);
 
-	var camAngle = 0;
+	var camAngle = 0.1;
 	var autoRotate = false;
 	// document.getElementById('threed').onclick = function() { autoRotate = !autoRotate; if (autoRotate) { render(); } };
 	// document.getElementById('threed').ondrag = function() { autoRotate = !autoRotate; if (autoRotate) { render(); } };
