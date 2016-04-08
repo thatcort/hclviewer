@@ -7,5 +7,8 @@
 <body>
 	<p>There are many HCL colour space viewers available online (see e.g. <a href="http://tristen.ca/hcl-picker/">here</a> and <a href="https://vis4.net/blog/posts/avoid-equidistant-hsv-colors/">here</a>). I created this one beacuse I felt it would be useful to be able to see how the colours in a 2D slice of the space relate to the overall 3D shape of the LAB colour space.</p>
 	<p>The shape of the 3D surface was generated in <a href="https://processing.org">Processing</a> using <a href="https://github.com/neilpanchal/Chroma">Neil Panchal's port of chroma.js</a>. This library goes one step beyond the original and adds the handy 'saturate' feature that attemps to find the most saturated RGB colour for a given hue and luminance. Unfortunately, I think this feature also introduces some numerical error, resulting in the weird scalloped edges on the 3D surface. I'm pretty sure these scallops shouldn't be there, and they don't seem to appear on the 2D slices. They also don't interfere with understanding the colour space, so I haven't spent much time trying to fix them.</p>
+	<p>More information on understanding and using colour in data visualizations is available here:
+	<ol><li><a href="https://briancort.com/?p=146">https://briancort.com/?p=146</a></li><li><a href="https://briancort.com/?p=174">https://briancort.com/?p=174</a></li></ol>
+	</p>
 </body>
 </html>
